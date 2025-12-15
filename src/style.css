@@ -1,0 +1,514 @@
+:root {
+  --bg-dark: #0a0e27;
+  --bg-card: #1a1f3a;
+  --bg-card-light: #252b4a;
+  --accent-primary: #6366f1;
+  --accent-secondary: #a78bfa;
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --light-on: #fbbf24;
+  --light-off: #475569;
+  --shadow: rgba(99, 102, 241, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated Stars Background */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow:
+    100px 200px white,
+    200px 100px white,
+    300px 300px white,
+    400px 150px white,
+    500px 250px white,
+    600px 100px white,
+    700px 350px white,
+    150px 50px white,
+    250px 350px white,
+    350px 200px white,
+    450px 300px white,
+    550px 150px white,
+    650px 250px white,
+    750px 100px white,
+    800px 200px white,
+    900px 150px white,
+    1000px 300px white,
+    1100px 100px white,
+    1200px 250px white,
+    50px 400px white;
+  animation: twinkle 3s infinite ease-in-out alternate;
+}
+
+.stars::after {
+  animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Styles */
+.header {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 40px var(--shadow);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.home-icon {
+  width: 3rem;
+  height: 3rem;
+  stroke: var(--accent-primary);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 10px var(--accent-primary));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.control-section,
+.plan-section {
+  background: var(--bg-card);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.btn-execute {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-execute:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-execute:active {
+  transform: translateY(0);
+}
+
+/* Adding styles for 4 plan buttons */
+.plan-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.btn-plan {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--bg-card-light), var(--bg-card));
+  color: var(--text-primary);
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-plan:hover {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-plan:active {
+  transform: translateY(0);
+}
+
+.btn-plan.active {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 2;
+}
+
+/* Rooms Grid */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.room-card {
+  background: var(--bg-card-light);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.room-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.room-card:hover::before {
+  transform: scaleX(1);
+}
+
+.room-card.light-on {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.2);
+}
+
+.room-card.light-off {
+  background: var(--bg-card-light);
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.room-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.room-status {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.light-icon-container {
+  position: relative;
+}
+
+.light-icon {
+  width: 3rem;
+  height: 3rem;
+  fill: var(--light-off);
+  transition: all 0.3s ease;
+}
+
+.room-card.light-on .light-icon {
+  fill: var(--light-on);
+  filter: drop-shadow(0 0 15px var(--light-on));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.glow-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rem;
+  height: 4rem;
+  background: radial-gradient(circle, var(--light-on), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.room-card.light-on .glow-effect {
+  opacity: 0.6;
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+.toggle-switch {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  background: rgba(71, 85, 105, 0.3);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toggle-switch:hover {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+.room-card.light-on .toggle-switch {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  background: var(--light-off);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-card.light-on .toggle-slider {
+  left: calc(100% - 2.5rem);
+  background: var(--light-on);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+}
+
+.toggle-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+}
+
+.toggle-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.toggle-text.off {
+  right: 1rem;
+  color: var(--text-secondary);
+}
+
+.toggle-text.on {
+  left: 1rem;
+  color: var(--light-on);
+  opacity: 0;
+}
+
+.room-card.light-on .toggle-text.on {
+  opacity: 1;
+}
+
+.room-card.light-on .toggle-text.off {
+  opacity: 0;
+}
+
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1.5rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-execute {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Making plan buttons stack on mobile */
+  .plan-buttons {
+    grid-template-columns: 1fr;
+  }
+}

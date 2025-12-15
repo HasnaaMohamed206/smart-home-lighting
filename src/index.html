@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Lighting Control</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Tau Prolog core library first -->
+    <!-- Tau Prolog هو: Prolog interpreter مكتوب بـ JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tau-prolog@0.3.4/modules/lists.js"></script>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg class="home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <h1>Smart Home Lighting</h1>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-value" id="lightsOn">0</span>
+                        <span class="stat-label">Lights On</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="lightsOff">5</span>
+                        <span class="stat-label">Lights Off</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="control-section">
+                <div class="section-header">
+                    <h2>Room Control</h2>
+                    <div class="plan-buttons">
+                        <button class="btn-plan" data-plan="morning">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            Morning Routine
+                        </button>
+                        <button class="btn-plan" data-plan="night">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            </svg>
+                            Night Mode
+                        </button>
+                        <button class="btn-plan" data-plan="movie">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"/>
+                            </svg>
+                            Movie Time
+                        </button>
+                        <button class="btn-plan" data-plan="party">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            Party Mode
+                        </button>
+                    </div>
+                </div>
+                <div class="rooms-grid" id="roomsGrid">
+                    <!-- Rooms will be dynamically generated -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Load scripts in correct order: Prolog program first, then app -->
+    <script src="smart-home.pl.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
