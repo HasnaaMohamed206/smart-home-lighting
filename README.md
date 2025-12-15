@@ -31,19 +31,6 @@ Prolog (TUe Prolog) is used as the reasoning engine to handle the rule-based log
 
 ---
 
-## Project Structure
-
-├── index.html # Main UI entry point
-├── style.css # CSS styles for the UI
-├── app.js # JavaScript for UI interactions
-├── smart-home.pl.js # Prolog logic integrated with JS
-├── doc/
-│ └── samrt-home-doc/ # Project documentation (report, diagrams, etc.)
-└── README.md # Project overview and instructions
-
-
----
-
 ## How It Works
 
 1. **Prolog Logic:**  
